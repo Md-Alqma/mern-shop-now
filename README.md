@@ -1,6 +1,6 @@
 # Shop-Now
 
-Shop-Now is a full-stack e-commerce website built using the MERN (MongoDB, Express, React, Node.js) stack. It provides a platform for users to browse, search, and purchase a wide range of products conveniently.
+Shop-Now is a full-stack e-commerce website built using the MERN (MongoDB, Express, React, Node.js) stack. It provides a platform for users to browse, search, and purchase a wide range of products conveniently. Interactive website with looks and feel of amazon.com.
 
 ## Features
 
