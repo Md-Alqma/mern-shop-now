@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useReducer } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LoadingBox from "../component/LoadingBox";
 import MessageBox from "../component/MessageBox";
 import Row from "react-bootstrap/Row";
@@ -28,6 +28,7 @@ const reducer = (state, action) => {
 };
 
 const ProductPage = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
@@ -64,6 +65,7 @@ const ProductPage = () => {
         payload: { ...product, quantity: 1 }, // payload: {...product, quantity} --> to see the product quantity in nav cart
       });
     }
+    navigate("/cart");
   };
   return loading ? (
     <LoadingBox />
