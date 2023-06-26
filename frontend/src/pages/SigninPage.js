@@ -27,6 +27,10 @@ function SigninPage() {
       });
       ctxDispatch({ type: "USER_SIGNIN", payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
+      toast("Login Successful", {
+        type: "success",
+        position: "top-right",
+      });
       navigate(redirect || "/");
     } catch (err) {
       toast.error(getError(err));

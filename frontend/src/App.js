@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { Store } from "./Store";
 import CartPage from "./pages/CartPage";
 import SigninPage from "./pages/SigninPage";
-import { ToastContainer } from "react-toastify";
+import { Flip, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ShippingAddressPage from "./pages/ShippingAddressPage";
 import SignupPage from "./pages/SignupPage";
@@ -23,12 +23,20 @@ function App() {
     ctxDispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
     localStorage.removeItem("shippingAddress");
-    localStorage.removeItem('paymentMethod')
+    localStorage.removeItem("paymentMethod");
   };
   return (
     <BrowserRouter>
       <div className="d-flex flex-column site-container">
-        <ToastContainer position="bottom-center" limit={1} />
+        {/* <ToastContainer position="bottom-center" limit={2} />
+         */}
+        <ToastContainer
+          position="bottom-center"
+          autoClose={2000}
+          limit={2}
+          closeOnClick
+          transition={Flip}
+        />
         <header>
           <Navbar bg="dark" variant="dark">
             <Container>

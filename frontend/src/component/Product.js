@@ -5,6 +5,7 @@ import Rating from "./Rating";
 import axios from "axios";
 import { useContext } from "react";
 import { Store } from "../Store";
+import { toast } from "react-toastify";
 
 const Product = (props) => {
   const { product } = props;
@@ -15,7 +16,8 @@ const Product = (props) => {
   const addToCartHandler = async (item) => {
     const existItem = cartItems.find((x) => x._id === product._id);
     if (existItem) {
-      window.alert("Product already in the cart");
+      toast.error("Product already in the cart");
+      return;
     }
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${item._id}`);
@@ -23,6 +25,9 @@ const Product = (props) => {
       window.alert("Sorry, Product is out of stock");
       return;
     } else {
+      toast("Product added to cart", {
+        type: "success",
+      });
       ctxDispatch({
         type: "ADD_TO_CART",
         payload: { ...item, quantity: 1 }, // payload: {...product, quantity} --> to see the product quantity in nav cart

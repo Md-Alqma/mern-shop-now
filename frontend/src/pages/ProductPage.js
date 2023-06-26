@@ -13,7 +13,7 @@ import Button from "react-bootstrap/Button";
 import { Helmet } from "react-helmet-async";
 import { getError } from "../utils";
 import { Store } from "../Store";
-
+import { toast } from "react-toastify";
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -54,12 +54,18 @@ const ProductPage = () => {
   const { cart } = state;
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
+    // if (existItem) {
+    //   toast.error("Product already in the cart");
+    // }
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
     if (data.countInStock < quantity) {
-      window.alert("Sorry, Product is out of stock");
+      toast.error("Sorry, Product is out of stock");
       return;
     } else {
+      toast("Product added to cart", {
+        type: "success",
+      });
       ctxDispatch({
         type: "ADD_TO_CART",
         payload: { ...product, quantity: 1 }, // payload: {...product, quantity} --> to see the product quantity in nav cart
@@ -120,9 +126,15 @@ const ProductPage = () => {
                 {product.countInStock > 0 && (
                   <ListGroup.Item>
                     <div className="d-grid">
-                      <Button onClick={addToCartHandler} variant="primary">
-                        Add to Cart
-                      </Button>
+                      {cart.cartItems.find((x) => x._id === product._id) ? (
+                        <Button onClick={() => navigate("/cart")}>
+                          Go to Cart
+                        </Button>
+                      ) : (
+                        <Button onClick={addToCartHandler} variant="primary">
+                          Add to Cart
+                        </Button>
+                      )}
                     </div>
                   </ListGroup.Item>
                 )}

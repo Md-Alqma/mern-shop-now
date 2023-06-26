@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 export default function CartScreen() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -17,15 +18,19 @@ export default function CartScreen() {
   } = state;
 
   const updateCartHandler = async (item, quantity) => {
-    const { data } = await axios.get(`/api/products/${item._id}`);
-    if (data.countInStock < quantity) {
-      window.alert("Sorry, Product is out of stock");
-      return;
-    } else {
-      ctxDispatch({
-        type: "ADD_TO_CART",
-        payload: { ...item, quantity }, // payload: {...product, quantity} --> to see the product quantity in nav cart
-      });
+    try {
+      const { data } = await axios.get(`/api/products/${item._id}`);
+      if (data.countInStock < quantity) {
+        toast.error("Sorry, Product is out of stock");
+        return;
+      } else {
+        ctxDispatch({
+          type: "ADD_TO_CART",
+          payload: { ...item, quantity }, // payload: {...product, quantity} --> to see the product quantity in nav cart
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   const removeItemHandler = (item) => {
