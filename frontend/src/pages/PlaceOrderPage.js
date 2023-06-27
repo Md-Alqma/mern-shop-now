@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer } from "react";
-import Axios from "axios";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutSteps from "../component/CheckoutSteps";
 import LoadingBox from "../component/LoadingBox";
@@ -47,7 +47,7 @@ export default function PlaceOrderPage() {
     try {
       dispatch({ type: "CREATE_REQUEST" });
 
-      const { data } = await Axios.post(
+      const { data } = await axios.post(
         "/api/orders",
         {
           orderItems: cart.cartItems,
@@ -64,10 +64,10 @@ export default function PlaceOrderPage() {
           },
         }
       );
-      dispatch({ type: "CART_CLEAR" });
+      ctxDispatch({ type: "CART_CLEAR" });
       dispatch({ type: "CREATE_SUCCESS" });
       localStorage.removeItem("cartItems");
-      navigate(`order/${data.order._id}`);
+      navigate(`/order/${data.order._id}`);
     } catch (err) {
       dispatch({ type: "CREATE_FAIL" });
       toast.error(getError(err));
