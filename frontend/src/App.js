@@ -21,7 +21,7 @@ function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
   const signoutHandler = () => {
-    ctxDispatch({ type: "USER_SIGNOUT" });
+    ctxDispatch({ type: "USER_SIGN_OUT" });
     localStorage.removeItem("userInfo");
     localStorage.removeItem("shippingAddress");
     localStorage.removeItem("paymentMethod");

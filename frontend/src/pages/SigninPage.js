@@ -25,7 +25,7 @@ function SigninPage() {
         email,
         password,
       });
-      ctxDispatch({ type: "USER_SIGNIN", payload: data });
+      ctxDispatch({ type: "USER_SIGN_IN", payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
       toast("Login Successful", {
         type: "success",
