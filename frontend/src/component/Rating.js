@@ -1,3 +1,5 @@
+// Component to display ratings in star format
+
 const Rating = (props) => {
   const { rating, numReviews } = props;
   return (

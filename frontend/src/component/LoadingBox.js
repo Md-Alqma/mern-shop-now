@@ -1,3 +1,5 @@
+// Loading effect component
+
 import React from 'react'
 import Spinner from 'react-bootstrap/Spinner'
 function LoadingBox() {

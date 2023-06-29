@@ -1,3 +1,5 @@
+// Payment Page
+
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import CheckoutSteps from "../component/CheckoutSteps";

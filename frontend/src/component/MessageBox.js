@@ -1,3 +1,5 @@
+// Component for showing messages for the errors
+
 import React from "react";
 import Alert from "react-bootstrap/Alert";
 

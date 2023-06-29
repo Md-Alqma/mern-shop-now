@@ -1,3 +1,5 @@
+// Component for single products card
+
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
