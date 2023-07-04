@@ -32,6 +32,7 @@ Make sure to replace `your-username` with your actual GitHub username in the clo
   - Redux
   - HTML
   - CSS
+  - Context API
 - Back-end:
   - Node.js
   - Express.js
