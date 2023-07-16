@@ -19,6 +19,7 @@ import PaymentPage from "./pages/PaymentPage";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
 import OrderPage from "./pages/OrderPage";
 import OrderHistoryPage from "./pages/OrderHistoryPage";
+import ProfilePage from "./pages/ProfilePage";
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -27,6 +28,7 @@ function App() {
     localStorage.removeItem("userInfo");
     localStorage.removeItem("shippingAddress");
     localStorage.removeItem("paymentMethod");
+    window.location.href = '/signin';
   };
   return (
     <BrowserRouter>
@@ -60,7 +62,7 @@ function App() {
                   </Link>
                   {userInfo ? (
                     <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
-                      <LinkContainer to="/">
+                      <LinkContainer to="/profile">
                         <NavDropdown.Item>User Profile</NavDropdown.Item>
                       </LinkContainer>
                       <LinkContainer to="/orderHistory">
@@ -91,6 +93,7 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
               <Route path="/signin" element={<SigninPage />} />
               <Route path="/signup" element={<SignupPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
               <Route path="/shipping" element={<ShippingAddressPage />} />
               <Route path="/payment" element={<PaymentPage />} />
               <Route path="/placeorder" element={<PlaceOrderPage />} />
