@@ -1,0 +1,21 @@
+{
+  "name": "shop-now",
+  "version": "1.0.0",
+  "description": "Shop-Now is a full-stack e-commerce website built using the MERN (MongoDB, Express, React, Node.js) stack. It provides a platform for users to browse, search, and purchase a wide range of products conveniently. Interactive website with looks and feel of amazon.com.",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",
+    "start": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Md-Alqma/mern-shop-now.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Md-Alqma/mern-shop-now/issues"
+  },
+  "homepage": "https://github.com/Md-Alqma/mern-shop-now#readme"
+}
