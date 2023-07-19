@@ -24,6 +24,7 @@ import Button from "react-bootstrap/Button";
 import { getError } from "./utils";
 import axios from "axios";
 import SearchBox from "./component/SearchBox";
+import SearchPage from "./pages/SearchPage";
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -142,6 +143,7 @@ function App() {
             <Routes>
               <Route path="/product/:slug" element={<ProductPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/search" element={<SearchPage />} />
               <Route path="/signin" element={<SigninPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/profile" element={<ProfilePage />} />
