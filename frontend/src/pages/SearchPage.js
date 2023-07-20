@@ -97,7 +97,7 @@ export default function SearchPage() {
       } catch (err) {
         dispatch({
           type: "FETCH_FAIL",
-          payload: getError(error),
+          payload: getError(err),
         });
       }
     };
