@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useReducer } from "react";
 import { Helmet } from "react-helmet-async";
-import LoadingBox from "../component/LoadingBox";
-import MessageBox from "../component/MessageBox";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
 import { Store } from "../Store";
 import { useNavigate } from "react-router-dom";
 import { getError } from "../utils";

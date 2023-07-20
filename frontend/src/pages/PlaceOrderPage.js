@@ -3,8 +3,8 @@
 import React, { useContext, useEffect, useReducer } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import CheckoutSteps from "../component/CheckoutSteps";
-import LoadingBox from "../component/LoadingBox";
+import CheckoutSteps from "../components/CheckoutSteps";
+import LoadingBox from "../components/LoadingBox";
 import { Helmet } from "react-helmet-async";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

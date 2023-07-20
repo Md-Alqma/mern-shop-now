@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 // Cart Page
 
-import MessageBox from "../component/MessageBox";
+import MessageBox from "../components/MessageBox";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";

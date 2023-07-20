@@ -4,9 +4,9 @@ import axios from "axios";
 import { useEffect, useReducer } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Product from "../component/Product";
-import LoadingBox from "../component/LoadingBox";
-import MessageBox from "../component/MessageBox";
+import Product from "../components/Product";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
 import { Helmet } from "react-helmet-async";
 
 const reducer = (state, action) => {

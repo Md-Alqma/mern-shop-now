@@ -23,7 +23,7 @@ import ProfilePage from "./pages/ProfilePage";
 import Button from "react-bootstrap/Button";
 import { getError } from "./utils";
 import axios from "axios";
-import SearchBox from "./component/SearchBox";
+import SearchBox from "./components/SearchBox";
 import SearchPage from "./pages/SearchPage";
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);

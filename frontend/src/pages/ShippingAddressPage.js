@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { Store } from "../Store";
-import CheckoutSteps from "../component/CheckoutSteps";
+import CheckoutSteps from "../components/CheckoutSteps";
 function ShippingAddressPage() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);

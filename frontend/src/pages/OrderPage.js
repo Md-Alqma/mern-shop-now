@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useReducer } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import LoadingBox from "../component/LoadingBox";
-import MessageBox from "../component/MessageBox";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
 import { Store } from "../Store";
 import axios from "axios";
 import { getError } from "../utils";

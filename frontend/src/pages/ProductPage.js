@@ -3,11 +3,11 @@
 import axios from "axios";
 import { useContext, useEffect, useReducer } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import LoadingBox from "../component/LoadingBox";
-import MessageBox from "../component/MessageBox";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Rating from "../component/Rating";
+import Rating from "../components/Rating";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
 import Card from "react-bootstrap/Card";
