@@ -79,7 +79,7 @@ export default function ProductListPage() {
         );
         toast.success("Product Created Successfully");
         dispatch({ type: "CREATE_SUCCESS" });
-        navigate(`admin/product/${data.product._id}`);
+        navigate(`/admin/product/${data.product._id}`);
       } catch (err) {
         toast.error(getError(err));
         dispatch({ type: "CREATE_FAIL" });
