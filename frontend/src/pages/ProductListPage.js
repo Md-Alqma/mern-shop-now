@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useReducer } from "react";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getError } from "../utils";
 import { Store } from "../Store";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { toast } from "react-toastify";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -20,17 +24,26 @@ const reducer = (state, action) => {
       };
     case "FETCH_FAIL":
       return { ...state, loading: false, error: action.payload };
+    case "CREATE_REQUEST":
+      return { ...state, loadingCreate: true };
+    case "CREATE_SUCCESS":
+      return { ...state, loadingCreate: false };
+    case "CREATE_FAIL":
+      return { ...state, loadingCreate: false };
     default:
       return state;
   }
 };
 export default function ProductListPage() {
-  const [{ loading, error, products, pages }, dispatch] = useReducer(reducer, {
-    loading: true,
-    error: "",
-  });
+  const [{ loading, error, products, pages, loadingCreate }, dispatch] =
+    useReducer(reducer, {
+      loading: true,
+      error: "",
+    });
 
-  const { search, pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const { search } = useLocation();
   const sp = new URLSearchParams(search);
   const page = sp.get("page") || 1;
 
@@ -40,6 +53,7 @@ export default function ProductListPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        dispatch({ type: "FETCH_REQUEST" });
         const { data } = await axios.get(`/api/products/admin?page=${page}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
@@ -51,9 +65,44 @@ export default function ProductListPage() {
 
     fetchData();
   }, [page, userInfo]);
+
+  const createProductHandler = async () => {
+    if (window.confirm("Are you sure to create?")) {
+      try {
+        dispatch({ type: "CREATE_REQUEST" });
+        const { data } = await axios.post(
+          "/api/products",
+          {},
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
+        toast.success("Product Created Successfully");
+        dispatch({ type: "CREATE_SUCCESS" });
+        navigate(`admin/product/${data.product._id}`);
+      } catch (err) {
+        toast.error(getError(err));
+        dispatch({ type: "CREATE_FAIL" });
+      }
+    }
+  };
   return (
     <div>
-      <h1>Products</h1>
+      <Row>
+        <Col>
+          <h1>Products</h1>
+        </Col>
+        <Col className="col text-end">
+          <div>
+            <Button type="button" onClick={createProductHandler}>
+              Create Product
+            </Button>
+          </div>
+        </Col>
+      </Row>
+
+      {loadingCreate && <LoadingBox />}
+
       {loading ? (
         <LoadingBox />
       ) : error ? (
