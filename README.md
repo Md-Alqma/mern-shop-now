@@ -14,7 +14,7 @@ Shop-Now is a full-stack e-commerce website built using the MERN (MongoDB, Expre
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/shop-now.git`
+1. Clone the repository: `git clone https://github.com/Md-Alqma/shop-now.git`
 2. Navigate to the project directory: `cd shop-now`
 3. Install server dependencies: `npm install`
 4. Install client dependencies: `cd client && npm install`
@@ -22,8 +22,6 @@ Shop-Now is a full-stack e-commerce website built using the MERN (MongoDB, Expre
    - Create a `.env` file in the root directory.
    - Define the following variables: `MONGODB_URI`, `SECRET_KEY`, `PAYPAL_CLIENT_ID`.
 6. Start the development server: `npm run dev`
-
-Make sure to replace `your-username` with your actual GitHub username in the clone command.
 
 ## Technologies Used
 
