@@ -4,6 +4,7 @@ Shop-Now is a full-stack e-commerce website built using the MERN (MongoDB, Expre
 
 ## Features
 
+- Beautiful UI and awesome User Experience
 - User authentication: Sign up, login, and logout functionality for both customers and administrators.
 - Product catalog: Browse through a diverse range of products with detailed information and images.
 - Search functionality: Easily find specific products using the search bar.
