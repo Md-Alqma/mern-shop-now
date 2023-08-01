@@ -7,6 +7,7 @@ import MessageBox from "../components/MessageBox";
 import { Helmet } from "react-helmet-async";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -16,17 +17,26 @@ const reducer = (state, action) => {
       return { ...state, users: action.payload, loading: false };
     case "FETCH_FAIL":
       return { ...state, loading: false, error: action.payload };
+    case "DELETE_REQUEST":
+      return { ...state, loadingDelete: true, successDelete: false };
+    case "DELETE_SUCCESS":
+      return { ...state, loadingDelete: false, successDelete: true };
+    case "DELETE_FAIL":
+      return { ...state, loadingDelete: false };
+    case "DELETE_RESET":
+      return { ...state, loadingDelete: false, successDelete: false };
     default:
       return state;
   }
 };
 export default function UserListPage() {
   const navigate = useNavigate();
-  const [{ loading, error, users }, dispatch] = useReducer(reducer, {
-    loading: false,
-    error: "",
-    users: [],
-  });
+  const [{ loading, error, users, loadingDelete, successDelete }, dispatch] =
+    useReducer(reducer, {
+      loading: false,
+      error: "",
+      users: [],
+    });
 
   const { state } = useContext(Store);
   const { userInfo } = state;
@@ -43,14 +53,35 @@ export default function UserListPage() {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
     };
-    fetchData();
-  }, [userInfo]);
+    if (successDelete) {
+      dispatch({ type: "DELETE_RESET" });
+    } else {
+      fetchData();
+    }
+  }, [successDelete, userInfo]);
+
+  const deleteHandler = async (user) => {
+    if (window.confirm("Are you sure to delete?")) {
+      try {
+        dispatch({ type: "DELETE_REQUEST" });
+        await axios.delete(`/api/users/${user._id}`, {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        });
+        toast.success("User Deleted Successful");
+        dispatch({ type: "DELETE_SUCCESS" });
+      } catch (err) {
+        toast.error(getError(err));
+        dispatch({ type: "DELETE_FAIL" });
+      }
+    }
+  };
   return (
     <div>
       <Helmet>
         <title>Users</title>
       </Helmet>
       <h1>Users</h1>
+      {loadingDelete && <LoadingBox />}
       {loading ? (
         <LoadingBox />
       ) : error ? (
@@ -79,6 +110,13 @@ export default function UserListPage() {
                     variant="light"
                     onClick={() => navigate(`/admin/user/${user._id}`)}>
                     Edit
+                  </Button>
+                  &nbsp;
+                  <Button
+                    type="button"
+                    variant="outline-danger"
+                    onClick={() => deleteHandler(user)}>
+                    Delete
                   </Button>
                 </td>
               </tr>
