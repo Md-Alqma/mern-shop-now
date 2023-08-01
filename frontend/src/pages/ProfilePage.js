@@ -6,6 +6,7 @@ import { Store } from "../Store";
 import { toast } from "react-toastify";
 import { getError } from "../utils";
 import axios from "axios";
+import LoadingBox from "../components/LoadingBox";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -68,6 +69,7 @@ export default function ProfilePage() {
         <title>User Profile</title>
       </Helmet>
       <h1 className="my-3">User Profile</h1>
+      {loadingUpdate && <LoadingBox />}
       <form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Name</Form.Label>
