@@ -193,7 +193,7 @@ export default function ProductEditPage() {
           </Form.Group>
           <Form.Group className="mb-3" controlId="imageFile">
             <Form.Label>Upload Image</Form.Label>
-            <Form.Control type="file" onChange={uploadFileHandler} />
+            <Form.Control type="file" onChange={(e)=>uploadFileHandler(e, false)} />
             {loadingUpload && <LoadingBox />}
           </Form.Group>
           <Form.Group className="mb-3" controlId="additionalImage">
