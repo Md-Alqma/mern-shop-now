@@ -15,7 +15,8 @@ main {
   flex: 1;
 }
 
-.btn-primary, .btn-outline-primary {
+.btn-primary,
+.btn-outline-primary {
   background-color: #f0c040;
   color: #000;
 }
@@ -95,4 +96,8 @@ main {
 
 .text-bold {
   font-weight: bold;
+}
+
+button.thumbnail {
+  padding: 0;
 }
