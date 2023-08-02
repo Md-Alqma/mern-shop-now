@@ -129,14 +129,13 @@ export default function ProductEditPage() {
           Authorization: `Bearer ${userInfo.token}`,
         },
       });
-      dispatch({ type: "UPLOAD_SUCCESS" });
-
       if (forImages) {
         setImages([...images, data.secure_url]);
       } else {
         setImage(data.secure_url);
       }
       toast.success("Image uploaded successfully. Click Update to apply it.");
+      dispatch({ type: "UPLOAD_SUCCESS" });
     } catch (err) {
       toast.error(getError(err));
       dispatch({ type: "UPLOAD_FAIL", payload: getError(err) });
