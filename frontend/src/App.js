@@ -1,40 +1,46 @@
-
-
+// Global Imports
+import { useContext, useEffect, useState } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import axios from "axios";
+
+// Local Imports
+import { Store } from "./Store";
+import { getError } from "./utils";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import AdminRoute from "./components/AdminRoute";
+
+// Pages Imports
+import CartPage from "./pages/CartPage";
+import DashboardPage from "./pages/DashboardPage";
 import HomePage from "./pages/HomePage";
+import OrderPage from "./pages/OrderPage";
+import OrderHistoryPage from "./pages/OrderHistoryPage";
+import OrderListPage from "./pages/OrderListPage";
 import ProductPage from "./pages/ProductPage";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import PaymentPage from "./pages/PaymentPage";
+import PlaceOrderPage from "./pages/PlaceOrderPage";
+import ProfilePage from "./pages/ProfilePage";
+import ProductListPage from "./pages/ProductListPage";
+import ProductEditPage from "./pages/ProductEditPage";
+import SigninPage from "./pages/SigninPage";
+import ShippingAddressPage from "./pages/ShippingAddressPage";
+import SignupPage from "./pages/SignupPage";
+import SearchBox from "./components/SearchBox";
+import SearchPage from "./pages/SearchPage";
+import UserListPage from "./pages/UserListPage";
+import UserEditPage from "./pages/UserEditPage";
+
+// External Imports
+import "react-toastify/dist/ReactToastify.css";
+import { Flip, ToastContainer, toast } from "react-toastify";
 import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Badge from "react-bootstrap/Badge";
-import { useContext, useEffect, useState } from "react";
-import { Store } from "./Store";
-import CartPage from "./pages/CartPage";
-import SigninPage from "./pages/SigninPage";
-import { Flip, ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import ShippingAddressPage from "./pages/ShippingAddressPage";
-import SignupPage from "./pages/SignupPage";
-import PaymentPage from "./pages/PaymentPage";
-import PlaceOrderPage from "./pages/PlaceOrderPage";
-import OrderPage from "./pages/OrderPage";
-import OrderHistoryPage from "./pages/OrderHistoryPage";
-import ProfilePage from "./pages/ProfilePage";
 import Button from "react-bootstrap/Button";
-import { getError } from "./utils";
-import axios from "axios";
-import SearchBox from "./components/SearchBox";
-import SearchPage from "./pages/SearchPage";
-import ProtectedRoutes from "./components/ProtectedRoutes";
-import DashboardPage from "./pages/DashboardPage";
-import AdminRoute from "./components/AdminRoute";
-import ProductListPage from "./pages/ProductListPage";
-import ProductEditPage from "./pages/ProductEditPage";
-import OrderListPage from "./pages/OrderListPage";
-import UserListPage from "./pages/UserListPage";
-import UserEditPage from "./pages/UserEditPage";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import NavDropdown from "react-bootstrap/NavDropdown";
+
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
