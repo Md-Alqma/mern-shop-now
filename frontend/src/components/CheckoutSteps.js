@@ -1,8 +1,12 @@
 //  Component to track the checkout steps so far.
 
+// Global Imports
 import React from "react";
+
+// External Imports
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
 function CheckoutSteps(props) {
   return (
     <Row className="checkout-steps">
