@@ -1,23 +1,29 @@
 // Product Page
 
-import axios from "axios";
+// Global Imports
 import { useContext, useEffect, useReducer, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+
+// Local Imports
+import { Store } from "../Store";
+import { getError } from "../utils";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+import Rating from "../components/Rating";
+
+// External Imports
+import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Rating from "../components/Rating";
 import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import Badge from "react-bootstrap/Badge";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { Helmet } from "react-helmet-async";
-import { getError } from "../utils";
-import { Store } from "../Store";
-import { toast } from "react-toastify";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "REFRESH_PRODUCT":

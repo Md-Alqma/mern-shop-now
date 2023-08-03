@@ -1,12 +1,18 @@
 // Payment Page
 
+// Global Imports
 import React, { useContext, useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
+
+// Local Imports
+import { Store } from "../Store";
 import CheckoutSteps from "../components/CheckoutSteps";
+
+// External Imports
+import { Helmet } from "react-helmet-async";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Store } from "../Store";
-import { useNavigate } from "react-router-dom";
+
 export default function PaymentPage() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);

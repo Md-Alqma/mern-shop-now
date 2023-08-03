@@ -1,19 +1,24 @@
 // Place Order Page
 
+// Global Imports
 import React, { useContext, useEffect, useReducer } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
+// Local Imports
+import { Store } from "../Store";
+import { getError } from "../utils";
 import CheckoutSteps from "../components/CheckoutSteps";
 import LoadingBox from "../components/LoadingBox";
+
+// External Imports
 import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
-import { getError } from "../utils";
-import { toast } from "react-toastify";
-import { Store } from "../Store";
 
 const reducer = (state, action) => {
   switch (action.type) {

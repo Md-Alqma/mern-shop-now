@@ -1,18 +1,25 @@
+// Order Page
+
+// Global Imports
 import React, { useContext, useEffect, useReducer } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+
+// Local Imports
+import { Store } from "../Store";
+import { getError } from "../utils";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-import { Store } from "../Store";
-import axios from "axios";
-import { getError } from "../utils";
+
+// External Imports
 import { Helmet } from "react-helmet-async";
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import { toast } from "react-toastify";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-import { toast } from "react-toastify";
 
 function reducer(state, action) {
   switch (action.type) {

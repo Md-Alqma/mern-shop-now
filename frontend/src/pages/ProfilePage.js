@@ -1,12 +1,19 @@
+// Profile Page
+
+// Global Imports
 import React, { useContext, useReducer, useState } from "react";
+import axios from "axios";
+
+// Local Imports
+import { Store } from "../Store";
+import { getError } from "../utils";
+import LoadingBox from "../components/LoadingBox";
+
+// External Imports
 import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Store } from "../Store";
-import { toast } from "react-toastify";
-import { getError } from "../utils";
-import axios from "axios";
-import LoadingBox from "../components/LoadingBox";
 
 const reducer = (state, action) => {
   switch (action.type) {

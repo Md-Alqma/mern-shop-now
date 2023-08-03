@@ -1,13 +1,21 @@
+// Admin Order List Page
+
+// Global Imports
 import React, { useContext, useEffect, useReducer } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { getError } from "../utils";
+import axios from "axios";
+
+// Local Imports
 import { Store } from "../Store";
+import { getError } from "../utils";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
+
+// External Imports
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
 import Button from "react-bootstrap/Button";
-import LoadingBox from "../components/LoadingBox";
-import MessageBox from "../components/MessageBox";
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH_REQUEST":
