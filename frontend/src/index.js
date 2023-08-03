@@ -1,18 +1,23 @@
+// Global Imports
 import React from "react";
-import {createRoot} from "react-dom/client";
-import { HelmetProvider } from "react-helmet-async";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { createRoot } from "react-dom/client";
+
+// Local Imports
 import "./index.css";
 import App from "./App";
 import { StoreProvider } from "./Store";
-import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+
+// External Imports
+import "bootstrap/dist/css/bootstrap.min.css";
+import { HelmetProvider } from "react-helmet-async";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <StoreProvider>
       <HelmetProvider>
-      <PayPalScriptProvider deferLoading={true}>
+        <PayPalScriptProvider deferLoading={true}>
           <App />
         </PayPalScriptProvider>
       </HelmetProvider>
