@@ -1,12 +1,18 @@
 // Shipping Address filling Page
 
+// Global Imports
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+// Local Imports
+import { Store } from "../Store";
+import CheckoutSteps from "../components/CheckoutSteps";
+
+// External Imports
 import { Helmet } from "react-helmet-async";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useNavigate } from "react-router-dom";
-import { Store } from "../Store";
-import CheckoutSteps from "../components/CheckoutSteps";
+
 function ShippingAddressPage() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);

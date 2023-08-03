@@ -1,15 +1,21 @@
 // Sign In Page
 
+// Global Imports
 import React, { useContext, useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+
+// Local Imports
+import { Store } from "../Store";
+import { getError } from "../utils";
+
+// External Imports
+import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Axios from "axios";
-import { Store } from "../Store";
-import { toast } from "react-toastify";
-import { getError } from "../utils";
+
 function SigninPage() {
   const navigate = useNavigate();
   const { search } = useLocation();
@@ -23,7 +29,7 @@ function SigninPage() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await Axios.post("/api/users/signin", {
+      const { data } = await axios.post("/api/users/signin", {
         email,
         password,
       });

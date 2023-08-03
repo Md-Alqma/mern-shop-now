@@ -1,16 +1,23 @@
+// Search Page/Product Listing Page
+
+// Global Imports
 import React, { useEffect, useReducer, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
+
+// Local Imports
 import { getError } from "../utils";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
+import Rating from "../components/Rating";
+import Product from "../components/Product";
+
+// External Imports
+import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Rating from "../components/Rating";
-import LoadingBox from "../components/LoadingBox";
-import MessageBox from "../components/MessageBox";
 import Button from "react-bootstrap/Button";
-import Product from "../components/Product";
 import LinkContainer from "react-router-bootstrap/LinkContainer";
 
 const reducer = (state, action) => {
