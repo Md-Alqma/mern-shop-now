@@ -1,7 +1,11 @@
+// Global Imports
 import express from "express";
+
+// Local Imports
 import Product from "../models/productModel.js";
 import data from "../data.js";
 import User from "../models/userModel.js";
+
 const seedRouter = express.Router();
 
 seedRouter.get("/", async (req, res) => {

@@ -1,8 +1,12 @@
+// Global Imports
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
-import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
+
+// Local Imports
 import { isAuth, generateToken, isAdmin } from "../utils.js";
+import User from "../models/userModel.js";
+
 const userRouter = express.Router();
 
 userRouter.get(

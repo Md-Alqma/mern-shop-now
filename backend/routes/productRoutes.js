@@ -1,7 +1,10 @@
+// Global Imports
 import express from "express";
-import Product from "../models/productModel.js";
 import expressAsyncHandler from "express-async-handler";
+
+// Local Imports
 import { isAdmin, isAuth } from "../utils.js";
+import Product from "../models/productModel.js";
 
 const productRouter = express.Router();
 

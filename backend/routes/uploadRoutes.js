@@ -1,7 +1,10 @@
+// Global Imports
 import express from "express";
 import { v2 as cloudinary } from "cloudinary";
 import streamifier from "streamifier";
 import multer from "multer";
+
+// Local Imports
 import { isAdmin, isAuth } from "../utils.js";
 
 const upload = multer();
