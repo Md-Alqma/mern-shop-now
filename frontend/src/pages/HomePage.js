@@ -1,12 +1,17 @@
 // Home Page
 
-import axios from "axios";
+// Global Imports
 import { useEffect, useReducer } from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import axios from "axios";
+
+// Local Imports
 import Product from "../components/Product";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+
+// External Imports
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { Helmet } from "react-helmet-async";
 
 const reducer = (state, action) => {

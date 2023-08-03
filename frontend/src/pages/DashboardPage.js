@@ -1,10 +1,17 @@
+// Admin Dashboard Page
+
+// Global Imports
 import React, { useContext, useEffect, useReducer } from "react";
-import Chart from "react-google-charts";
 import axios from "axios";
+
+// Local Imports
 import { Store } from "../Store";
 import { getError } from "../utils";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+
+// External Imports
+import Chart from "react-google-charts";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";

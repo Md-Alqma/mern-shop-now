@@ -1,17 +1,23 @@
+// Cart Page
+
+// Global Imports
 import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
+// Local Imports
 import { Store } from "../Store";
+import MessageBox from "../components/MessageBox";
+
+// External Imports
 import { Helmet } from "react-helmet-async";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// Cart Page
-
-import MessageBox from "../components/MessageBox";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
+
 export default function CartScreen() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
