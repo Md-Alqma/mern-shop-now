@@ -1,12 +1,17 @@
 // Component for single products card
 
+// Global Imports
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+// Local Imports
+import Rating from "./Rating";
+import { Store } from "../Store";
+
+// External Imports
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Rating from "./Rating";
-import axios from "axios";
-import { useContext } from "react";
-import { Store } from "../Store";
 import { toast } from "react-toastify";
 
 const Product = (props) => {

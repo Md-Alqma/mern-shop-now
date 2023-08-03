@@ -1,9 +1,14 @@
+// Component for Search Box
+
+// Global Imports
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+// External Imports
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
-import { useNavigate } from "react-router-dom";
 
 export default function SearchBox() {
   const navigate = useNavigate();
