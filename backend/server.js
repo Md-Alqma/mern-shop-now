@@ -13,15 +13,6 @@ import uploadRouter from "./routes/uploadRoutes.js";
 
 dotenv.config();
 
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("connected to db");
-  })
-  .catch((err) => {
-    console.log(err.message);
-  });
-
 const app = express();
 
 app.use(express.json());
@@ -48,7 +39,18 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 8080;
+const startServer = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("Connected to MongoDB");
 
-app.listen(PORT, () => {
-  console.log(`server is listening on http://localhost:${PORT}`);
-});
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error("MongoDB connection failed:", error);
+    process.exit(1);
+  }
+};
+
+startServer();

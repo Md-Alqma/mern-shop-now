@@ -17,7 +17,7 @@ export default function PaymentPage() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
-    cart: { shippingAddress, paymentMethod },
+    cart: { shippingAddress, paymentMethod }
   } = state;
   const [paymentMethodName, setPaymentMethod] = useState(
     paymentMethod || "PayPal"

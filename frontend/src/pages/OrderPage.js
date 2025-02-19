@@ -300,7 +300,8 @@ export default function OrderPage() {
                         <PayPalButtons
                           createOrder={createOrder}
                           onApprove={onApprove}
-                          onError={onError}></PayPalButtons>
+                          onError={onError}
+                        ></PayPalButtons>
                       </div>
                     )}
                     {loadingPay && <LoadingBox></LoadingBox>}
