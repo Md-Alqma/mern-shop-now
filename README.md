@@ -42,10 +42,6 @@ Shop-Now is a full-stack e-commerce website built using the MERN (MongoDB, Expre
 
 Contributions are welcome! If you find any bugs or want to suggest enhancements, please create an issue or submit a pull request.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Acknowledgements
 
 - The [MERN Stack](https://www.mongodb.com/mern-stack) - MongoDB, Express.js, React, Node.js
