@@ -1,15 +1,15 @@
 // Global Imports
 import path from "path";
 import express from "express";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
 
+import { connectDB } from "./config/db.js";
 // Local Imports
-import seedRouter from "./routes/seedRoutes.js";
-import productRouter from "./routes/productRoutes.js";
-import userRouter from "./routes/userRoutes.js";
-import orderRouter from "./routes/orderRoutes.js";
-import uploadRouter from "./routes/uploadRoutes.js";
+import seedRouter from "./src/routes/seedRoutes.js";
+import productRouter from "./src/routes/productRoutes.js";
+import userRouter from "./src/routes/userRoutes.js";
+import orderRouter from "./src/routes/orderRoutes.js";
+import uploadRouter from "./src/routes/uploadRoutes.js";
 
 dotenv.config();
 
@@ -39,18 +39,14 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 8080;
-const startServer = async () => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log("Connected to MongoDB");
 
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  } catch (error) {
-    console.error("MongoDB connection failed:", error);
-    process.exit(1);
-  }
-};
+connectDB();
 
-startServer();
+const server = app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+server.on('error', (error) => {
+  console.log('Server error:', error);
+  process.exit(1);
+})
