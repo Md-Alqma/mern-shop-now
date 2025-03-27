@@ -1,31 +1,28 @@
 import jwt from "jsonwebtoken";
-import User from "../models/userModel";
+import User from "../models/userModel.js";
 
 const decodeToken = (req) => {
   const authorization = req.headers.authorization;
   const bearer = authorization.split(" ")[1]; // Bearer XXXXXX --> it will ignore Bearer
-  if (bearer) {
-    try {
-      if (bearer) {
-        const decodedToken = jwt.verify(bearer, process.env.JWT_SECRET);
-        return decodedToken;
-      }
-    } catch {
+  try {
+    if (bearer) {
+      const decodedToken = jwt.verify(bearer, process.env.JWT_SECRET);
+      return decodedToken;
+    } else {
       return false;
     }
-  } else {
+  } catch {
     return false;
   }
 };
 
 export const isAuth = async (req, res, next) => {
   const decodedToken = decodeToken(req);
-  if(!decodedToken) {
-    return res.status(401).json({error: "Unauthorized"});
-  }
-  else {
+  if (!decodedToken) {
+    return res.status(401).json({ error: "Unauthorized" });
+  } else {
     const user = await User.findById(decodedToken._id);
-    if(!user) return res.status(401).json({error: "Unauthorized"});
+    if (!user) return res.status(401).json({ error: "Unauthorized" });
     req.user = user;
     next();
   }

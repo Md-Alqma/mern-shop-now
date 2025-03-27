@@ -5,7 +5,7 @@ import streamifier from "streamifier";
 import multer from "multer";
 
 // Local Imports
-import { isAdmin, isAuth } from "../utils.js";
+import { isAdmin, isAuth } from "../handlers/tokenHandler.js";
 
 const upload = multer();
 const uploadRouter = express.Router();

@@ -1,99 +1,41 @@
 // Global Imports
 import express from "express";
-import expressAsyncHandler from "express-async-handler";
-import bcrypt from "bcryptjs";
 
 // Local Imports
-import { isAuth, generateToken, isAdmin } from "../utils.js";
-import User from "../models/userModel.js";
+import { isAuth, isAdmin } from "../handlers/tokenHandler.js";
+import {register, login, profile, getAll, getOne, update, deleteUser} from '../controllers/user.js'
 
 const userRouter = express.Router();
 
-userRouter.get(
-  "/",
-  isAuth,
-  isAdmin,
-)
+userRouter.post("/signup", register);
 
-userRouter.put(
-  "/profile",
-  isAuth,
-  expressAsyncHandler(async (req, res) => {
-    const user = await User.findById(req.user._id);
-    if (user) {
-      user.name = req.body.name || user.name;
-      user.email = req.body.email || user.email;
-      if (req.body.password) {
-        user.password = bcrypt.hashSync(req.body.password, 8);
-      }
+userRouter.post("/signin", login);
 
-      const updatedUser = await user.save();
-      res.send({
-        _id: updatedUser._id,
-        name: updatedUser.name,
-        email: updatedUser.email,
-        isAdmin: updatedUser.isAdmin,
-        token: generateToken(updatedUser._id),
-      });
-    } else {
-      res.status(404).send({ message: "User not found" });
-    }
-  })
-);
+userRouter.put("/profile", isAuth, profile);
+
+userRouter.get("/", isAuth, isAdmin, getAll);
 
 userRouter.get(
   "/:id",
   isAuth,
   isAdmin,
-  expressAsyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id);
-    if (user) {
-      res.send(user);
-    } else {
-      res.status(404).send({ message: "User Not Found" });
-    }
-  })
+  getOne
 );
 
 userRouter.put(
   "/:id",
   isAuth,
   isAdmin,
-  expressAsyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id);
-    if (user) {
-      user.name = req.body.name || user.name;
-      user.email = req.body.email || user.email;
-      user.isAdmin = Boolean(req.body.isAdmin);
-      const updatedUser = await user.save();
-      res.send({ message: "User Updated", user: updatedUser });
-    } else {
-      res.status(404).send({ message: "User Not Found" });
-    }
-  })
+  update
 );
 
 userRouter.delete(
   "/:id",
   isAuth,
   isAdmin,
-  expressAsyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id);
-    if (user) {
-      if (user.email === "admin@example.com") {
-        res.status(400).send({ message: "Can Not Delete Admin User" });
-        return;
-      }
-      await user.deleteOne();
-      res.send(" User Deleted ");
-    } else {
-      res.status(404).send({ message: "User Not Found" });
-    }
-  })
+  deleteUser
 );
 
-userRouter.post("/signin");
 
-userRouter.post("/signup");
 
 export default userRouter;

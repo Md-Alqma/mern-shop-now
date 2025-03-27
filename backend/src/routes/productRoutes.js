@@ -3,7 +3,7 @@ import express from "express";
 import expressAsyncHandler from "express-async-handler";
 
 // Local Imports
-import { isAdmin, isAuth } from "../utils.js";
+import { isAdmin, isAuth } from "../handlers/tokenHandler.js";
 import Product from "../models/productModel.js";
 
 const productRouter = express.Router();

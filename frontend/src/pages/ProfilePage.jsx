@@ -42,6 +42,8 @@ export default function ProfilePage() {
   });
 
   const submitHandler = async (e) => {
+    console.log(userInfo.token);
+    
     e.preventDefault();
     try {
       dispatch({ type: "UPDATE_REQUEST" });

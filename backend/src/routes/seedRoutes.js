@@ -3,7 +3,7 @@ import express from "express";
 
 // Local Imports
 import Product from "../models/productModel.js";
-import data from "../data.js";
+import data from '../utils/data.js'
 import User from "../models/userModel.js";
 
 const seedRouter = express.Router();
